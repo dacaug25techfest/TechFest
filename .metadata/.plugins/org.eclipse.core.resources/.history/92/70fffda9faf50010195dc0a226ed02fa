@@ -1,0 +1,80 @@
+package com.example.demo.entities;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.*;
+
+@Entity
+public class UserEntity {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	Integer uid;
+	String name;
+	String phone;
+	String email;
+	String username;
+	String password;
+	Integer rid;
+	Integer state_id;
+	Integer city_id;
+	public Integer getUid() {
+		return uid;
+	}
+	public void setUid(Integer uid) {
+		this.uid = uid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public Integer getRid() {
+		return rid;
+	}
+	public void setRid(Integer rid) {
+		this.rid = rid;
+	}
+	public Integer getState_id() {
+		return state_id;
+	}
+	public void setState_id(Integer state_id) {
+		this.state_id = state_id;
+	}
+	public Integer getCity_id() {
+		return city_id;
+	}
+	public void setCity_id(Integer city_id) {
+		this.city_id = city_id;
+	}
+	
+	
+	
+	
+	
+	
+}
