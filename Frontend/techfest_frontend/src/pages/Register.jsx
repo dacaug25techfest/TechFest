@@ -5,9 +5,8 @@ import './Auth.css';
 // Temporary static data. In the real app, replace these
 // with values loaded from your backend / database.
 const ROLES = [
-  { id: 1, label: 'Admin' },
-  { id: 2, label: 'Attendee' },
-  { id: 3, label: 'Organiser' },
+  { id: 1, label: 'Attendee' },
+  { id: 2, label: 'Organiser' },
 ];
 
 const STATES = [
@@ -204,7 +203,7 @@ function Register() {
                 value={formData.name}
                 onChange={handleChange}
                 className={`form-input ${errors.name ? 'error' : ''}`}
-                placeholder="John Doe"
+                placeholder="Steve"
               />
               {errors.name && (
                 <span className="error-text">{errors.name}</span>
@@ -222,7 +221,7 @@ function Register() {
                 value={formData.username}
                 onChange={handleChange}
                 className={`form-input ${errors.username ? 'error' : ''}`}
-                placeholder="johndoe01"
+                placeholder="steve123"
               />
               {errors.username && (
                 <span className="error-text">{errors.username}</span>
@@ -243,7 +242,7 @@ function Register() {
                 value={formData.email}
                 onChange={handleChange}
                 className={`form-input ${errors.email ? 'error' : ''}`}
-                placeholder="john.doe@example.com"
+                placeholder="steve12@example.com"
               />
               {errors.email && (
                 <span className="error-text">{errors.email}</span>
