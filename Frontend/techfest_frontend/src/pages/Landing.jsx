@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Link } from 'react-router-dom';
 import './Landing.css';
 
@@ -93,8 +95,7 @@ function Landing() {
             <div className="role-card">
               <h3 className="role-title">Attendees</h3>
               <p className="role-description">
-                Discover events, register easily, and manage your participation. Track your registered events and stay updated.
-              </p>
+              Discover events, register easily, view your registered events, and provide feedback. Stay updated and manage your participation effortlessly.              </p>
             </div>
             <div className="role-card">
               <h3 className="role-title">Organizers</h3>
