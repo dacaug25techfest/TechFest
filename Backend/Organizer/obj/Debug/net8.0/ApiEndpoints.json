@@ -1,0 +1,82 @@
+[
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "Dashboard",
+    "RelativePath": "organizer/dashboard/{organizerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "organizerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "CreateEvent",
+    "RelativePath": "organizer/event",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ev",
+        "Type": "Organizer.Models.Event",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "UpdateEvent",
+    "RelativePath": "organizer/event",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ev",
+        "Type": "Organizer.Models.Event",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "DeleteEvent",
+    "RelativePath": "organizer/event/{eid}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "Registrations",
+    "RelativePath": "organizer/registrations/{eid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -14,7 +14,10 @@
     "bootstrap": "^5.3.8",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+<<<<<<< HEAD
     "react-redux": "^9.2.0",
+=======
+>>>>>>> 5c5ee2a1357b06db18abf98e13596262b9748daf
     "react-router-dom": "^7.12.0"
   },
   "devDependencies": {

@@ -1,0 +1,241 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:models\\registration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\models\\announcement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:models\\announcement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:models\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\organizer.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:organizer.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\repositories\\eventrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:repositories\\eventrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\services\\iorganizerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:services\\iorganizerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\services\\organizerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:services\\organizerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\controllers\\organizercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:controllers\\organizercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\repositories\\ieventrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:repositories\\ieventrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|c:\\techfesteventmanagementsystem\\backend\\organizer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-28T19:23:30.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Organizer.http",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Organizer.http",
+              "RelativeDocumentMoniker": "Organizer.http",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Organizer.http",
+              "RelativeToolTip": "Organizer.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-01-28T20:06:29.256Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\AppDbContext.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T18:58:08.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Models\\Event.cs",
+              "RelativeDocumentMoniker": "Models\\Event.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Models\\Event.cs",
+              "RelativeToolTip": "Models\\Event.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:06:55.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Registration.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Models\\Registration.cs",
+              "RelativeDocumentMoniker": "Models\\Registration.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Models\\Registration.cs",
+              "RelativeToolTip": "Models\\Registration.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAABYAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T20:24:51.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Announcement.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Models\\Announcement.cs",
+              "RelativeDocumentMoniker": "Models\\Announcement.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Models\\Announcement.cs",
+              "RelativeToolTip": "Models\\Announcement.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:07:24.03Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAABsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:03:50.376Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EventRepository.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Repositories\\EventRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\EventRepository.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Repositories\\EventRepository.cs",
+              "RelativeToolTip": "Repositories\\EventRepository.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:08:11.91Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IOrganizerService.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Services\\IOrganizerService.cs",
+              "RelativeDocumentMoniker": "Services\\IOrganizerService.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Services\\IOrganizerService.cs",
+              "RelativeToolTip": "Services\\IOrganizerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T20:00:21.345Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "OrganizerService.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Services\\OrganizerService.cs",
+              "RelativeDocumentMoniker": "Services\\OrganizerService.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Services\\OrganizerService.cs",
+              "RelativeToolTip": "Services\\OrganizerService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAYwB0AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:47:09.02Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "OrganizerController.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Controllers\\OrganizerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrganizerController.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Controllers\\OrganizerController.cs",
+              "RelativeToolTip": "Controllers\\OrganizerController.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAgwC0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T19:03:15.666Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IEventRepository.cs",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Repositories\\IEventRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\IEventRepository.cs",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\Repositories\\IEventRepository.cs",
+              "RelativeToolTip": "Repositories\\IEventRepository.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-28T20:39:54.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\TechFestEventManagementSystem\\Backend\\Organizer\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-01-28T20:13:45.347Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
