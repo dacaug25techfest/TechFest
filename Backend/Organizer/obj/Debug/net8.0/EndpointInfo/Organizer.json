@@ -139,8 +139,12 @@
     "schemas": {
       "Event": {
         "required": [
-          "description",
-          "ename"
+          "date",
+          "ename",
+          "fair",
+          "organizerId",
+          "time",
+          "vid"
         ],
         "type": "object",
         "properties": {
@@ -149,24 +153,25 @@
             "format": "int32"
           },
           "ename": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
           },
-          "date": {
-            "type": "string",
-            "format": "date-time"
+          "vid": {
+            "type": "integer",
+            "format": "int32"
           },
           "time": {
             "type": "string",
             "format": "date-span"
           },
-          "fee": {
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fair": {
             "type": "number",
             "format": "double"
-          },
-          "vid": {
-            "type": "integer",
-            "format": "int32"
           },
           "description": {
             "type": "string",

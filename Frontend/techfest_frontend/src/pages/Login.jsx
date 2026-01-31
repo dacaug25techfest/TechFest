@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
@@ -55,19 +57,47 @@ function Login() {
 
     setIsLoading(true);
     
-    // TODO: Replace with actual API call to Auth_Service
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For now, just navigate (will be replaced with actual auth logic)
-      console.log('Login data:', formData);
-      // navigate('/dashboard'); // Uncomment when ready
-      
-      alert('Login successful! (This is a placeholder - connect to backend)');
+      // 1) Authenticate user with Auth_Service
+      const loginResponse = await fetch('http://localhost:8080/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: formData.email.trim(),
+          password: formData.password,
+        }),
+      });
+
+      if (!loginResponse.ok) {
+        const errData = await loginResponse.json().catch(() => null);
+        throw new Error(errData?.message || 'Invalid email or password');
+      }
+
+      const user = await loginResponse.json();
+      localStorage.setItem('user', JSON.stringify(user));
+
+      // 2) Check if attendee profile is completed
+      const statusRes = await fetch(
+        `http://localhost:8082/api/attendee/profile-status/${user.uid}`
+      );
+
+      if (!statusRes.ok) {
+        throw new Error('Failed to check profile status');
+      }
+
+      const statusJson = await statusRes.json();
+      if (statusJson.profileCompleted) {
+        // alert('Login successful!');
+        navigate('/attendee/events');
+      } else {
+        //alert('Login successful! Please complete your profile.');
+        navigate('/attendee/profile');
+      }
     } catch (error) {
       console.error('Login error:', error);
-      setErrors({ submit: 'Login failed. Please try again.' });
+      setErrors({ submit: error.message || 'Login failed. Please try again.' });
     } finally {
       setIsLoading(false);
     }

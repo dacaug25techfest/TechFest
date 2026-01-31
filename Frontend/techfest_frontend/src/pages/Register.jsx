@@ -1,41 +1,38 @@
-import { useState } from 'react';
+import React from 'react';
+
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Auth.css';
 
-// Temporary static data. In the real app, replace these
-// with values loaded from your backend / database.
-const ROLES = [
-  { id: 1, label: 'Attendee' },
-  { id: 2, label: 'Organiser' },
-];
-
-const STATES = [
-  // IDs match your `state` table: 1 = Maharashtra, 2 = Karnataka
-  { id: 1, name: 'Maharashtra' },
-  { id: 2, name: 'Karnataka' },
-];
-
-const CITIES_BY_STATE = {
-  // Maharashtra (state_id = 1)
-  1: [
-    { id: 1, name: 'Mumbai' },
-    { id: 2, name: 'Pune' },
-    { id: 3, name: 'Nashik' },
-    { id: 4, name: 'Nagpur' },
-    { id: 5, name: 'Aurangabad' },
-    { id: 6, name: 'Kolhapur' },
-  ],
-  // Karnataka (state_id = 2)
-  2: [
-    { id: 7, name: 'Bangalore' },
-    { id: 8, name: 'Mangalore' },
-    { id: 9, name: 'Mysore' },
-    { id: 10, name: 'Hubli' },
-    { id: 11, name: 'Belgaum' },
-  ],
-};
-
 function Register() {
+  const [roles] = useState([
+    // These IDs should match your `role` table
+    { id: 1, label: 'Attendee' },
+    { id: 2, label: 'Organiser' },
+  ]);
+  const [states] = useState([
+    // These IDs should match your `state` table
+    { id: 1, name: 'Maharashtra' },
+    { id: 2, name: 'Karnataka' },
+  ]);
+  const [citiesByState] = useState({
+    1: [
+      { id: 1, name: 'Mumbai' },
+      { id: 2, name: 'Pune' },
+      { id: 3, name: 'Nashik' },
+      { id: 4, name: 'Nagpur' },
+      { id: 5, name: 'Aurangabad' },
+      { id: 6, name: 'Kolhapur' },
+    ],
+    2: [
+      { id: 7, name: 'Bangalore' },
+      { id: 8, name: 'Mangalore' },
+      { id: 9, name: 'Mysore' },
+      { id: 10, name: 'Hubli' },
+      { id: 11, name: 'Belgaum' },
+    ],
+  });
+
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -51,6 +48,11 @@ function Register() {
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // If needed later, you can replace the static role/state/city
+    // lists with API calls here (e.g. fetch /api/roles, /api/states).
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -142,26 +144,43 @@ function Register() {
 
     setIsLoading(true);
     
-    // TODO: Replace with actual API call to Auth_Service
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // For now, just log (will be replaced with actual auth logic)
-      console.log('Registration data:', formData);
-      // navigate('/login'); // Uncomment when ready
-      
-      alert('Registration successful! (This is a placeholder - connect to backend)');
+      const response = await fetch('http://localhost:8080/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          username: formData.username.trim(),
+          phone: formData.phone.trim(),
+          email: formData.email.trim(),
+          password: formData.password,
+          stateId: Number(formData.stateId),
+          cityId: Number(formData.cityId),
+          role: {
+            rid: Number(formData.rid),
+          },
+        }),
+      });
+
+      if (!response.ok) {
+        const errData = await response.json().catch(() => null);
+        throw new Error(errData?.message || 'Registration failed');
+      }
+
+      await response.json();
+      navigate('/login');
     } catch (error) {
       console.error('Registration error:', error);
-      setErrors({ submit: 'Registration failed. Please try again.' });
+      setErrors({ submit: error.message || 'Registration failed. Please try again.' });
     } finally {
       setIsLoading(false);
     }
   };
 
   const availableCities = formData.stateId
-    ? CITIES_BY_STATE[formData.stateId] || []
+    ? citiesByState[formData.stateId] || []
     : [];
 
   return (
@@ -308,7 +327,7 @@ function Register() {
           <div className="form-group">
             <span className="form-label">Role</span>
             <div className="role-options">
-              {ROLES.map((role) => (
+              {roles.map((role) => (
                 <label key={role.id} className="checkbox-label">
                   <input
                     type="radio"
@@ -338,7 +357,7 @@ function Register() {
                 className={`form-input ${errors.stateId ? 'error' : ''}`}
               >
                 <option value="">Select state</option>
-                {STATES.map((state) => (
+                {states.map((state) => (
                   <option key={state.id} value={state.id}>
                     {state.name}
                   </option>
