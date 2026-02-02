@@ -1,1 +1,21 @@
-/.metadata/
+# IntelliJ / Eclipse
+.idea/
+.metadata/
+*.iml
+
+# Backend IDE folders
+Backend/.idea/
+Backend/.metadata/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node
+node_modules/
+
+# Maven
+target/
