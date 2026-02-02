@@ -24,6 +24,7 @@ function Landing() {
 
           </nav>
           <div className="nav-actions">
+            <Link to="/admin/login" className="btn-outline">Admin</Link>
             <Link to="/login" className="btn-outline">Login</Link>
             <Link to="/register" className="btn-primary">Register</Link>
           </div>
