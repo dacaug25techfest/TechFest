@@ -19,3 +19,8 @@ node_modules/
 
 # Maven
 target/
+# Eclipse / IDE junk
+.metadata/
+.settings/
+.classpath
+.project
