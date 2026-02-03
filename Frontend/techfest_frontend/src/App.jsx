@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navbar from './Navbar';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -13,6 +14,12 @@ import AdminEvents from './pages/admin/AdminEvents';
 import AdminOrganizers from './pages/admin/AdminOrganizers';
 import AdminFeedback from './pages/admin/AdminFeedback';
 import AdminProtectedRoute from './pages/admin/AdminProtectedRoute';
+import OrganizerDashboard from './organizer/OrganizerDashboard';
+import CreateEvent from './organizer/CreateEvent';
+import ManageEvents from './organizer/ManageEvents';
+import ViewRegistrations from './organizer/ViewRegistrations';
+import Announcement from './organizer/Announcement';
+import OrganizerAnalytics from './organizer/OrganizerAnalytics';
 import './App.css';
 
 function App() {
@@ -35,17 +42,11 @@ function App() {
         <Route path="/organizer" element={<OrganizerDashboard />} />
         <Route path="/organizer/create-event" element={<CreateEvent />} />
         <Route path="/organizer/manage-events" element={<ManageEvents />} />
-        <Route
-          path="/organizer/registrations"
-          element={<ViewRegistrations />}
-        />
+        <Route path="/organizer/registrations" element={<ViewRegistrations />} />
         <Route path="/organizer/announcement" element={<Announcement />} />
         <Route path="/organizer/analytics" element={<OrganizerAnalytics />} />
 
         {/* ===== ADMIN ===== */}
-        <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="/admin/approve-events" element={<ApproveEvents />} />
-        {/* <Route path="/admin/manage-users" element={<ManageUsers />} /> */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
           path="/admin"

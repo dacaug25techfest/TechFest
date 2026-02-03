@@ -95,8 +95,9 @@ public class AttendeeService {
         return branchRepository.findAll();
     }
 
+    /** Get only APPROVED events (status = 1) for attendees to browse */
     public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+        return eventRepository.findApprovedEvents();
     }
 
     public Ticket registerForEvent(EventRegistrationRequest request) {
@@ -106,6 +107,11 @@ public class AttendeeService {
 
         Event event = eventRepository.findById(request.getEid())
                 .orElseThrow(() -> new IllegalArgumentException("Event not found"));
+
+        // Check if event is approved (status = 1)
+        if (event.getStatus() != null && event.getStatus() != 1) {
+            throw new IllegalStateException("This event is not available for registration. It may be pending approval or has been rejected.");
+        }
 
         int people = Math.max(1, request.getNoOfPeople());
 

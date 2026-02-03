@@ -1,4 +1,4 @@
-﻿using Organizer.Models;
+using Organizer.Models;
 
 namespace Organizer.Repositories
 {
@@ -8,7 +8,7 @@ namespace Organizer.Repositories
         Task<Event> UpdateEvent(Event ev);
         Task DeleteEvent(int eid);
         Task<List<Event>> GetEventsByOrganizer(int organizerId);
-        Task<List<Registration>> GetEventRegistrations(int eid);
+        Task<List<RegistrationDto>> GetEventRegistrations(int eid);
 
         // Lookup tables
         Task<List<State>> GetStates();

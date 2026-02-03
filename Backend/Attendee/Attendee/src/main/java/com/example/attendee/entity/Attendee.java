@@ -14,24 +14,22 @@ public class Attendee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "att_id")
     private int attId;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private int uid;
 
     private LocalDate dob;
 
-    private int degreeId;
+    @Column(name = "degree_id")
+    private Integer degreeId;
+
+    @Column(name = "bid")
+    private Integer bid;
+
+    @Column(name = "branch_id")
     private int branchId;
 
     private String address;
-
-    // State and City for location tracking
-    @Column(name = "state_id")
-    private Integer stateId;
-
-    @Column(name = "city_id")
-    private Integer cityId;
-
-    // getters & setters
 }

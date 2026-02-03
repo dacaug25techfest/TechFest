@@ -28,6 +28,18 @@ const getCityName = (cityId, cities) => {
   return c ? getCityLabel(c) : cityId ?? "-";
 };
 
+const STATUS_LABELS = { 0: 'PENDING', 1: 'APPROVED', 2: 'REJECTED' };
+const getStatusLabel = (status) => {
+  if (status == null) return 'PENDING';
+  return STATUS_LABELS[status] ?? String(status);
+};
+const getStatusBadgeClass = (status) => {
+  if (status == null || status === 0) return 'bg-warning';
+  if (status === 1) return 'bg-success';
+  if (status === 2) return 'bg-danger';
+  return 'bg-secondary';
+};
+
 export default function OrganizerDashboard() {
   const navigate = useNavigate();
   
@@ -58,15 +70,9 @@ export default function OrganizerDashboard() {
   const [announcementMessage, setAnnouncementMessage] = useState("");
   const [sendingAnnouncement, setSendingAnnouncement] = useState(false);
 
-  const totalRegistrations = useMemo(
-    () => registrations.reduce((sum, r) => sum + (r.noOfPeople || r.no_of_people || 0), 0),
-    [registrations]
-  );
-
   const analyticsStats = useMemo(() => {
-    const totalPeople = analytics.reduce((sum, ev) => sum + (ev.totalPeople || ev.total_people || 0), 0);
     const totalRegs = analytics.reduce((sum, ev) => sum + (ev.totalRegistrations || ev.total_registrations || 0), 0);
-    return { totalPeople, totalRegs, eventCount: analytics.length };
+    return { totalRegs, eventCount: analytics.length };
   }, [analytics]);
 
   useEffect(() => {
@@ -303,7 +309,7 @@ export default function OrganizerDashboard() {
 
         {/* Summary Cards */}
         <div className="row g-3 mb-4">
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div className="card border-primary h-100 shadow-sm">
               <div className="card-body">
                 <div className="d-flex align-items-center">
@@ -318,7 +324,7 @@ export default function OrganizerDashboard() {
               </div>
             </div>
           </div>
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div className="card border-success h-100 shadow-sm">
               <div className="card-body">
                 <div className="d-flex align-items-center">
@@ -333,22 +339,7 @@ export default function OrganizerDashboard() {
               </div>
             </div>
           </div>
-          <div className="col-md-3">
-            <div className="card border-info h-100 shadow-sm">
-              <div className="card-body">
-                <div className="d-flex align-items-center">
-                  <div className="flex-grow-1">
-                    <h6 className="text-muted text-uppercase small mb-1">Total Attendees</h6>
-                    <h3 className="mb-0 text-info">{analyticsStats.totalPeople}</h3>
-                  </div>
-                  <div className="text-info fs-1 opacity-25">
-                    <i className="bi bi-person-check"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-3">
+          <div className="col-md-4">
             <div className="card border-warning h-100 shadow-sm">
               <div className="card-body">
                 <div className="d-flex align-items-center">
@@ -400,7 +391,6 @@ export default function OrganizerDashboard() {
                       <th>State</th>
                       <th>City</th>
                       <th>Registrations</th>
-                      <th>Total People</th>
                       <th>Age Distribution</th>
                     </tr>
                   </thead>
@@ -411,17 +401,20 @@ export default function OrganizerDashboard() {
                         <td><span className="badge bg-secondary">{ev.stateName || ev.state_name}</span></td>
                         <td><span className="badge bg-info">{ev.cityName || ev.city_name}</span></td>
                         <td>{ev.totalRegistrations || ev.total_registrations}</td>
-                        <td className="fw-bold">{ev.totalPeople || ev.total_people}</td>
                         <td>
                           {(!ev.ageBuckets || ev.ageBuckets.length === 0) ? (
                             <span className="text-muted small">No age data</span>
                           ) : (
                             <div className="d-flex flex-wrap gap-1">
-                              {(ev.ageBuckets || []).map((bucket, idx) => (
-                                <span key={idx} className="badge bg-primary">
-                                  {bucket.fromAge || bucket.from_age}-{bucket.toAge || bucket.to_age}: {bucket.count}
-                                </span>
-                              ))}
+                              {(ev.ageBuckets || []).map((bucket, idx) => {
+                                const from = Math.max(0, bucket.fromAge ?? bucket.from_age ?? 0);
+                                const to = bucket.toAge ?? bucket.to_age ?? from + 9;
+                                return (
+                                  <span key={idx} className="badge bg-primary">
+                                    {from}-{to} yrs: {bucket.count}
+                                  </span>
+                                );
+                              })}
                             </div>
                           )}
                         </td>
@@ -471,6 +464,7 @@ export default function OrganizerDashboard() {
                       <th>Time</th>
                       <th>Fee</th>
                       <th>Capacity</th>
+                      <th>Status</th>
                       <th>Location</th>
                       <th className="text-end">Actions</th>
                     </tr>
@@ -484,6 +478,11 @@ export default function OrganizerDashboard() {
                         <td>{e.time ? String(e.time).substring(0, 5) : "-"}</td>
                         <td>₹{e.fair || e.fee}</td>
                         <td>{e.capacity ?? "-"}</td>
+                        <td>
+                          <span className={`badge ${getStatusBadgeClass(e.status)}`}>
+                            {getStatusLabel(e.status)}
+                          </span>
+                        </td>
                         <td>
                           {getCityName(
                             getVenueCityId(getVenue(e.vid, venues) ?? {}),
@@ -511,14 +510,16 @@ export default function OrganizerDashboard() {
                             >
                               <i className="bi bi-pencil"></i>
                             </button>
-                            <button
-                              type="button"
-                              className="btn btn-outline-danger"
-                              onClick={() => deleteEvent(e.eid)}
-                              title="Delete Event"
-                            >
-                              <i className="bi bi-trash"></i>
-                            </button>
+                            {(analytics.find(a => (a.eventId ?? a.event_id) === e.eid)?.totalRegistrations ?? 0) === 0 && (
+                              <button
+                                type="button"
+                                className="btn btn-outline-danger"
+                                onClick={() => deleteEvent(e.eid)}
+                                title="Delete Event"
+                              >
+                                <i className="bi bi-trash"></i>
+                              </button>
+                            )}
                           </div>
                         </td>
                       </tr>
@@ -553,33 +554,26 @@ export default function OrganizerDashboard() {
               )}
 
               {registrations.length > 0 && (
-                <>
-                  <div className="mb-3">
-                    <h6>
-                      Total People Registered: <span className="badge bg-success fs-6">{totalRegistrations}</span>
-                    </h6>
-                  </div>
-                  <div className="table-responsive">
-                    <table className="table table-sm">
-                      <thead>
-                        <tr>
-                          <th>Registration ID</th>
-                          <th>Attendee ID</th>
-                          <th>No. of People</th>
+                <div className="table-responsive">
+                  <table className="table table-sm">
+                    <thead>
+                      <tr>
+                        <th>Registration #</th>
+                        <th>Attendee Name</th>
+                        <th>Party Size</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {registrations.map(r => (
+                        <tr key={r.regId || r.reg_id}>
+                          <td>{r.regId ?? r.reg_id}</td>
+                          <td>{r.attendeeName ?? r.attendee_name ?? `Attendee #${r.attId ?? r.att_id}`}</td>
+                          <td><span className="badge bg-primary">{r.noOfPeople ?? r.no_of_people}</span></td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {registrations.map(r => (
-                          <tr key={r.regId || r.reg_id}>
-                            <td>{r.regId || r.reg_id}</td>
-                            <td>{r.attId || r.att_id}</td>
-                            <td><span className="badge bg-primary">{r.noOfPeople || r.no_of_people}</span></td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               )}
 
               <hr />

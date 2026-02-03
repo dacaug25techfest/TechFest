@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Organizer.Models;
 using System.Collections.Generic;
 
@@ -17,6 +17,7 @@ namespace Organizer.Data
         public Microsoft.EntityFrameworkCore.DbSet<City> Cities { get; set; }
         public Microsoft.EntityFrameworkCore.DbSet<Venue> Venues { get; set; }
         public Microsoft.EntityFrameworkCore.DbSet<Attendee> Attendees { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<User> Users { get; set; }
         public Microsoft.EntityFrameworkCore.DbSet<Announcement> Announcements { get; set; }
     }
 

@@ -137,22 +137,36 @@ function MyTickets() {
 
                 <div style={{ marginTop: '1rem' }}>
                   <p className="feature-description">
-                    <strong>Give Feedback (1–5)</strong>
+                    <strong>Rate this event (1–5 stars)</strong>
                   </p>
-                  <input
-                    type="number"
-                    min="1"
-                    max="5"
-                    className="form-input"
-                    style={{ maxWidth: '80px' }}
-                    value={rating[ticket.ticketNo] || ''}
-                    onChange={(e) =>
-                      setRating((prev) => ({
-                        ...prev,
-                        [ticket.ticketNo]: e.target.value,
-                      }))
-                    }
-                  />
+                  <div className="star-rating-input" style={{ display: 'flex', gap: '4px', marginBottom: '0.5rem' }}>
+                    {[1, 2, 3, 4, 5].map((star) => {
+                      const val = Number(rating[ticket.ticketNo]) || 0;
+                      const active = star <= val;
+                      return (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() =>
+                            setRating((prev) => ({
+                              ...prev,
+                              [ticket.ticketNo]: String(star),
+                            }))
+                          }
+                          style={{
+                            background: 'none',
+                            border: 'none',
+                            fontSize: '1.5rem',
+                            cursor: 'pointer',
+                            color: active ? '#ffc107' : '#ccc',
+                          }}
+                          title={`${star} star${star > 1 ? 's' : ''}`}
+                        >
+                          ★
+                        </button>
+                      );
+                    })}
+                  </div>
                   <textarea
                     className="form-input"
                     rows="2"

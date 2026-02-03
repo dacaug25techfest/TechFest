@@ -153,12 +153,14 @@ export default function CreateEvent() {
       fair: parseFloat(form.fair),
       description: form.description || "",
       capacity: parseInt(form.capacity, 10),
-      organizerId: ORGANIZER_ID,
+      organizerId: Number(ORGANIZER_ID),
     };
 
     try {
       setSaving(true);
-      await axios.post(`${API}/event`, payload);
+      await axios.post(`${API}/event`, payload, {
+        headers: { "Content-Type": "application/json" },
+      });
       alert("Event created successfully!");
       navigate("/organizer");
     } catch (err) {
@@ -417,17 +419,6 @@ export default function CreateEvent() {
                         )}
                       </div>
                     </div>
-
-                    {form.vid && (
-                      <div className="alert alert-info">
-                        <strong>Selected Venue:</strong>{" "}
-                        {venues.find(v => (v.vid ?? v.Vid) === Number(form.vid))?.address || `Venue ID: ${form.vid}`}
-                        <br />
-                        <small>
-                          Capacity: {venues.find(v => (v.vid ?? v.Vid) === Number(form.vid))?.capacity || "N/A"}
-                        </small>
-                      </div>
-                    )}
 
                     <div className="mb-4">
                       <label className="form-label fw-semibold">Description</label>

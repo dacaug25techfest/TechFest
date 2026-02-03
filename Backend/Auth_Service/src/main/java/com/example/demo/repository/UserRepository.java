@@ -8,8 +8,6 @@ import com.example.demo.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-   
-
     boolean existsByUsername(String email);
 
 	Optional<User> findByEmailAndPassword(String email, String password);

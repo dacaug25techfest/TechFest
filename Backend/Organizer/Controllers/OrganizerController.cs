@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Organizer.Models;
 using Organizer.Services;
@@ -19,7 +19,7 @@ namespace Organizer.Controllers
 
         // 1. Create Event
         [HttpPost("event")]
-        public async Task<IActionResult> CreateEvent(Event ev)
+        public async Task<IActionResult> CreateEvent([FromBody] Event ev)
         {
             return Ok(await _service.CreateEvent(ev));
         }

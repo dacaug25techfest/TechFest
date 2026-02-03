@@ -214,12 +214,18 @@
 }
 
 /* Feedback list */
-.feedback-rating {
+.feedback-rating,
+.feedback-stars {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.1rem;
   color: #d97706;
   font-weight: 600;
+}
+
+.feedback-stars {
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
 }
 
 /* Empty / loading */

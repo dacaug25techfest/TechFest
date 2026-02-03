@@ -24,7 +24,7 @@ function AdminOrganizers() {
       <div className="admin-page-header">
         <h1 className="admin-page-title">Organizers</h1>
         <p className="admin-page-subtitle">
-          Users registered as organizers (from user table). Verify and monitor organizer accounts.
+          Users registered as organizers (from user table). Organizers with role "Organizer" (rid=2) are verified and can create events.
         </p>
       </div>
       <div className="admin-card admin-table-wrap">
@@ -39,6 +39,7 @@ function AdminOrganizers() {
                 <th>Username</th>
                 <th>Phone</th>
                 <th>Role</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>
@@ -49,6 +50,11 @@ function AdminOrganizers() {
                   <td>{u.username ?? '—'}</td>
                   <td>{u.phone ?? '—'}</td>
                   <td>{u.role?.rname ?? 'Organiser'}</td>
+                  <td>
+                    <span style={{ color: '#059669', fontWeight: 500 }}>
+                      ✓ Verified
+                    </span>
+                  </td>
                 </tr>
               ))}
             </tbody>

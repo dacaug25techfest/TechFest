@@ -37,11 +37,6 @@ export default function OrganizerAnalytics() {
     load();
   }, [ORGANIZER_ID]);
 
-  const totalPeople = useMemo(
-    () => data.reduce((sum, ev) => sum + (ev.totalPeople || 0), 0),
-    [data]
-  );
-
   if (!ORGANIZER_ID) {
     return (
       <div className="container mt-4">
@@ -69,19 +64,11 @@ export default function OrganizerAnalytics() {
       {!loading && !error && data.length > 0 && (
         <>
           <div className="row g-3 mb-4">
-            <div className="col-md-4">
+            <div className="col-md-12">
               <div className="card shadow-sm h-100">
                 <div className="card-body">
-                  <h6 className="text-muted mb-1">Events</h6>
+                  <h6 className="text-muted mb-1">Total Events</h6>
                   <h3 className="mb-0">{data.length}</h3>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="card shadow-sm h-100">
-                <div className="card-body">
-                  <h6 className="text-muted mb-1">Total People Registered</h6>
-                  <h3 className="mb-0">{totalPeople}</h3>
                 </div>
               </div>
             </div>
@@ -97,9 +84,8 @@ export default function OrganizerAnalytics() {
                       <th>Event</th>
                       <th>State</th>
                       <th>City</th>
-                      <th>Total Registrations</th>
-                      <th>Total People</th>
-                      <th>Age Buckets (Count)</th>
+                      <th>Registrations</th>
+                      <th>Age Distribution</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -109,21 +95,21 @@ export default function OrganizerAnalytics() {
                         <td>{ev.stateName}</td>
                         <td>{ev.cityName}</td>
                         <td>{ev.totalRegistrations}</td>
-                        <td>{ev.totalPeople}</td>
                         <td>
                           {(!ev.ageBuckets || ev.ageBuckets.length === 0) && (
                             <span className="text-muted">No age data</span>
                           )}
                           {ev.ageBuckets && ev.ageBuckets.length > 0 && (
                             <div className="d-flex flex-wrap gap-1">
-                              {ev.ageBuckets.map(bucket => (
-                                <span
-                                  key={`${bucket.fromAge}-${bucket.toAge}`}
-                                  className="badge bg-secondary"
-                                >
-                                  {bucket.fromAge}-{bucket.toAge}: {bucket.count}
-                                </span>
-                              ))}
+                              {ev.ageBuckets.map((bucket, idx) => {
+                                const from = Math.max(0, bucket.fromAge ?? 0);
+                                const to = bucket.toAge ?? from + 9;
+                                return (
+                                  <span key={idx} className="badge bg-secondary">
+                                    {from}-{to} yrs: {bucket.count}
+                                  </span>
+                                );
+                              })}
                             </div>
                           )}
                         </td>

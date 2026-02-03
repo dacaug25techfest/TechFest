@@ -1,4 +1,4 @@
-﻿using Organizer.Models;
+using Organizer.Models;
 using Organizer.Repositories;
 
 namespace Organizer.Services
@@ -32,7 +32,7 @@ namespace Organizer.Services
             return _repo.GetEventsByOrganizer(organizerId);
         }
 
-        public Task<List<Registration>> ViewRegistrations(int eid)
+        public Task<List<RegistrationDto>> ViewRegistrations(int eid)
         {
             return _repo.GetEventRegistrations(eid);
         }
