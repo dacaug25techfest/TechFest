@@ -26,6 +26,12 @@ public class Attendee {
 
     private String address;
 
+    // State and City for location tracking
+    @Column(name = "state_id")
+    private Integer stateId;
+
+    @Column(name = "city_id")
+    private Integer cityId;
+
     // getters & setters
 }
-

@@ -52,6 +52,47 @@ namespace Organizer.Controllers
         {
             return Ok(await _service.ViewRegistrations(eid));
         }
+
+        // 6. Lookup: States
+        [HttpGet("states")]
+        public async Task<IActionResult> States()
+        {
+            return Ok(await _service.GetStates());
+        }
+
+        // 7. Lookup: Cities
+        [HttpGet("cities")]
+        public async Task<IActionResult> Cities()
+        {
+            return Ok(await _service.GetCities());
+        }
+
+        // 8. Lookup: Venues
+        [HttpGet("venues")]
+        public async Task<IActionResult> Venues()
+        {
+            return Ok(await _service.GetVenues());
+        }
+
+        // 9. Analytics: events, attendees, age buckets, by organizer
+        [HttpGet("analytics/{organizerId}")]
+        public async Task<IActionResult> Analytics(int organizerId)
+        {
+            return Ok(await _service.GetEventAnalytics(organizerId));
+        }
+
+        // 10. Announcements
+        [HttpPost("announcement")]
+        public async Task<IActionResult> CreateAnnouncement([FromBody] Announcement dto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var created = await _service.CreateAnnouncement(dto);
+            return Ok(created);
+        }
     }
 
 }

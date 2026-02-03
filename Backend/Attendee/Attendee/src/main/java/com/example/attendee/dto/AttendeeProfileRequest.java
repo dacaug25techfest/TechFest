@@ -14,6 +14,8 @@ public class AttendeeProfileRequest {
     private Integer degreeId;
     private Integer branchId;
     private String address;
+    private Integer stateId;
+    private Integer cityId;
 
     // getters & setters
 }

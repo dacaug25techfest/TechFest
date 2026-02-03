@@ -33,5 +33,12 @@ namespace Organizer.Models
         [Required]
         [Column(name:"uid")]
         public int OrganizerId { get; set; } // user.uid (organizer)
+
+        // Event capacity (NOT NULL in DB)
+        [Required]
+        public int Capacity { get; set; }
+
+        // Optional status flag (e.g. 0 = inactive, 1 = active)
+        public int? Status { get; set; }
     }
 }

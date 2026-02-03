@@ -36,6 +36,31 @@ namespace Organizer.Services
         {
             return _repo.GetEventRegistrations(eid);
         }
+
+        public Task<List<State>> GetStates()
+        {
+            return _repo.GetStates();
+        }
+
+        public Task<List<City>> GetCities()
+        {
+            return _repo.GetCities();
+        }
+
+        public Task<List<Venue>> GetVenues()
+        {
+            return _repo.GetVenues();
+        }
+
+        public Task<List<EventAnalyticsDto>> GetEventAnalytics(int organizerId)
+        {
+            return _repo.GetEventAnalytics(organizerId);
+        }
+
+        public Task<Announcement> CreateAnnouncement(Announcement announcement)
+        {
+            return _repo.CreateAnnouncement(announcement);
+        }
     }
 
 }

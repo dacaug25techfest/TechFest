@@ -1,50 +1,67 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import LoginComp from './components/LoginComp';
-import RegisterComp from './components/RegisterComp';
-import AppHome from './components/AppHome';
-import { Link,Outlet,Route, Routes } from 'react-router-dom';
-import Navbar from './Navbar';
-=======
-=======
-import React from 'react';
->>>>>>> 17c6540073f37951078d9f314c5d251a94487bb1
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Landing from './pages/Landing';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import AttendeeProfile from './pages/AttendeeProfile';
-import Events from './pages/Events';
-import MyTickets from './pages/MyTickets';
-import './App.css';
->>>>>>> 5c5ee2a1357b06db18abf98e13596262b9748daf
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./App.css";
+
+// Common
+import Navbar from "./Navbar";
+
+// Public pages
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+
+// Attendee pages
+import AttendeeProfile from "./pages/AttendeeProfile";
+import Events from "./pages/Events";
+import MyTickets from "./pages/MyTickets";
+
+// Organizer pages
+import OrganizerDashboard from "./organizer/OrganizerDashboard";
+import CreateEvent from "./organizer/CreateEvent";
+import ManageEvents from "./organizer/ManageEvents";
+import ViewRegistrations from "./organizer/ViewRegistrations";
+import Announcement from "./organizer/Announcement";
+import OrganizerAnalytics from "./organizer/OrganizerAnalytics";
+
+// Admin pages
+import AdminDashboard from "./admin/AdminDashboard";
+import ApproveEvents from "./admin/ApproveEvents";
+//import ManageUsers from "./admin/ManageUsers";
 
 function App() {
   return (
-<<<<<<< HEAD
-    <>
-      <Navbar/>
-      <Outlet/>
-
-    </>
-  )
-=======
     <Router>
+      <Navbar />
+
       <Routes>
+        {/* ===== PUBLIC ===== */}
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* ===== ATTENDEE ===== */}
         <Route path="/attendee/profile" element={<AttendeeProfile />} />
         <Route path="/attendee/events" element={<Events />} />
         <Route path="/attendee/tickets" element={<MyTickets />} />
+
+        {/* ===== ORGANIZER ===== */}
+        <Route path="/organizer" element={<OrganizerDashboard />} />
+        <Route path="/organizer/create-event" element={<CreateEvent />} />
+        <Route path="/organizer/manage-events" element={<ManageEvents />} />
+        <Route
+          path="/organizer/registrations"
+          element={<ViewRegistrations />}
+        />
+        <Route path="/organizer/announcement" element={<Announcement />} />
+        <Route path="/organizer/analytics" element={<OrganizerAnalytics />} />
+
+        {/* ===== ADMIN ===== */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/approve-events" element={<ApproveEvents />} />
+        {/* <Route path="/admin/manage-users" element={<ManageUsers />} /> */}
       </Routes>
     </Router>
   );
->>>>>>> 5c5ee2a1357b06db18abf98e13596262b9748daf
 }
 
 export default App;
