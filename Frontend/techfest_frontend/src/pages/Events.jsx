@@ -142,32 +142,6 @@ function Events() {
             </p>
           </div>
 
-          {/* Stats pills */}
-          {/* <div
-            style={{
-              display: 'flex',
-              justifyContent: 'flex-end',
-              gap: '1rem',
-              marginBottom: '1.5rem',
-            }}
-          >
-            <div className="feature-card" style={{ padding: '0.75rem 1.5rem' }}>
-              <p className="feature-title" style={{ marginBottom: 0 }}>
-                {tickets.length}
-              </p>
-              <p className="feature-description" style={{ marginBottom: 0 }}>
-                Registered
-              </p>
-            </div>
-            <div className="feature-card" style={{ padding: '0.75rem 1.5rem' }}>
-              <p className="feature-title" style={{ marginBottom: 0 }}>
-                {events.length}
-              </p>
-              <p className="feature-description" style={{ marginBottom: 0 }}>
-                Available
-              </p>
-            </div>
-          </div> */}
 
           {/* Tabs */}
           <div
@@ -200,7 +174,7 @@ function Events() {
           </div>
 
           {/* Last ticket banner */}
-          {lastTicket && activeTab === 'browse' && (
+          {/* {lastTicket && activeTab === 'browse' && (
             <div className="feature-card" style={{ marginBottom: '1.5rem' }}>
               <h3 className="feature-title">Ticket booked successfully!</h3>
               <p className="feature-description">
@@ -208,7 +182,7 @@ function Events() {
                 &nbsp;|&nbsp; Amount: ₹{lastTicket.amt}
               </p>
             </div>
-          )}
+          )} */}
 
           {isLoading && <p className="section-subtitle">Loading...</p>}
           {error && <p className="section-subtitle">{error}</p>}
@@ -277,6 +251,7 @@ function Events() {
               </div>
             </>
           )}
+
         </div>
       </section>
     </div>

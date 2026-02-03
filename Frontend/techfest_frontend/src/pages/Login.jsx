@@ -59,7 +59,7 @@ function Login() {
     
     try {
       // 1) Authenticate user with Auth_Service
-      const loginResponse = await fetch('http://localhost:8080/api/login', {
+      const loginResponse = await fetch('http://localhost:8081/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
