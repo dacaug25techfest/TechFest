@@ -75,6 +75,14 @@ public class AttendeeService {
         attendee.setDegreeId(request.getDegreeId());
         attendee.setBranchId(request.getBranchId());
         attendee.setAddress(request.getAddress().trim());
+        
+        // Set state and city if provided (optional fields)
+        if (request.getStateId() != null) {
+            attendee.setStateId(request.getStateId());
+        }
+        if (request.getCityId() != null) {
+            attendee.setCityId(request.getCityId());
+        }
 
         return attendeeRepository.save(attendee);
     }

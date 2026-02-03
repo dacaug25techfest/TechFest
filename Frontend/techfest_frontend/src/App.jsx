@@ -18,13 +18,34 @@ import './App.css';
 function App() {
   return (
     <Router>
+      <Navbar />
+
       <Routes>
+        {/* ===== PUBLIC ===== */}
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        {/* ===== ATTENDEE ===== */}
         <Route path="/attendee/profile" element={<AttendeeProfile />} />
         <Route path="/attendee/events" element={<Events />} />
         <Route path="/attendee/tickets" element={<MyTickets />} />
+
+        {/* ===== ORGANIZER ===== */}
+        <Route path="/organizer" element={<OrganizerDashboard />} />
+        <Route path="/organizer/create-event" element={<CreateEvent />} />
+        <Route path="/organizer/manage-events" element={<ManageEvents />} />
+        <Route
+          path="/organizer/registrations"
+          element={<ViewRegistrations />}
+        />
+        <Route path="/organizer/announcement" element={<Announcement />} />
+        <Route path="/organizer/analytics" element={<OrganizerAnalytics />} />
+
+        {/* ===== ADMIN ===== */}
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/approve-events" element={<ApproveEvents />} />
+        {/* <Route path="/admin/manage-users" element={<ManageUsers />} /> */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route
           path="/admin"

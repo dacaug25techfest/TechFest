@@ -78,22 +78,33 @@ function Login() {
       const user = await loginResponse.json();
       localStorage.setItem('user', JSON.stringify(user));
 
-      // 2) Check if attendee profile is completed
-      const statusRes = await fetch(
-        `http://localhost:8082/api/attendee/profile-status/${user.uid}`
-      );
+      // Decide where to go based on role from Auth_Service / DB.
+      // Backend sends: user.role.{rid, rname}
+      const roleId = user.role?.rid;
+      const roleName = user.role?.rname;
 
-      if (!statusRes.ok) {
-        throw new Error('Failed to check profile status');
-      }
-
-      const statusJson = await statusRes.json();
-      if (statusJson.profileCompleted) {
-        // alert('Login successful!');
-        navigate('/attendee/events');
+      if (roleName === 'Organizer' || roleId === 2) {
+        // Organizer
+        navigate('/organizer');
+      } else if (roleName === 'Admin' || roleId === 3) {
+        // Admin
+        navigate('/admin');
       } else {
-        //alert('Login successful! Please complete your profile.');
-        navigate('/attendee/profile');
+        // Attendee default behaviour: check profile status
+        const statusRes = await fetch(
+          `http://localhost:8082/api/attendee/profile-status/${user.uid}`
+        );
+
+        if (!statusRes.ok) {
+          throw new Error('Failed to check profile status');
+        }
+
+        const statusJson = await statusRes.json();
+        if (statusJson.profileCompleted) {
+          navigate('/attendee/events');
+        } else {
+          navigate('/attendee/profile');
+        }
       }
     } catch (error) {
       console.error('Login error:', error);

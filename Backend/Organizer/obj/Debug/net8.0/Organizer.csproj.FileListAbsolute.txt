@@ -1,0 +1,8 @@
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\Organizer.csproj.AssemblyReference.cache
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\Organizer.GeneratedMSBuildEditorConfig.editorconfig
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\Organizer.AssemblyInfoInputs.cache
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\Organizer.AssemblyInfo.cs
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\Organizer.csproj.CoreCompileInputs.cache
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\Organizer.MvcApplicationPartsAssemblyInfo.cs
+C:\TechFestEventManagementSystem\Backend\Organizer\obj\Debug\net8.0\Organizer.MvcApplicationPartsAssemblyInfo.cache

@@ -1,0 +1,189 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Organizer",
+    "version": "1.0"
+  },
+  "paths": {
+    "/organizer/event": {
+      "post": {
+        "tags": [
+          "Organizer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Organizer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Event"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/organizer/event/{eid}": {
+      "delete": {
+        "tags": [
+          "Organizer"
+        ],
+        "parameters": [
+          {
+            "name": "eid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/organizer/dashboard/{organizerId}": {
+      "get": {
+        "tags": [
+          "Organizer"
+        ],
+        "parameters": [
+          {
+            "name": "organizerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/organizer/registrations/{eid}": {
+      "get": {
+        "tags": [
+          "Organizer"
+        ],
+        "parameters": [
+          {
+            "name": "eid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Event": {
+        "required": [
+          "date",
+          "ename",
+          "fair",
+          "organizerId",
+          "time",
+          "vid"
+        ],
+        "type": "object",
+        "properties": {
+          "eid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ename": {
+            "maxLength": 100,
+            "minLength": 0,
+            "type": "string"
+          },
+          "vid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "time": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fair": {
+            "type": "number",
+            "format": "double"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizerId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
