@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/attendee")
+@RequestMapping("/attendee")
 @CrossOrigin
 public class AttendeeController {
 

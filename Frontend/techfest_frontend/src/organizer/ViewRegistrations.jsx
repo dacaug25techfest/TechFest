@@ -78,7 +78,6 @@ export default function ViewRegistrations() {
     }
   };
 
-  const totalPeople = registrations.reduce((sum, r) => sum + (r.noOfPeople || 0), 0);
   const selectedEvent = events.find(e => e.eid === Number(selectedEventId));
 
   if (!ORGANIZER_ID) {
@@ -211,7 +210,7 @@ export default function ViewRegistrations() {
               <>
                 {/* Summary Cards */}
                 <div className="row g-3 mb-4">
-                  <div className="col-md-4">
+                  <div className="col-md-6">
                     <div className="card border-primary">
                       <div className="card-body text-center">
                         <h6 className="text-muted mb-1">Total Registrations</h6>
@@ -219,15 +218,7 @@ export default function ViewRegistrations() {
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-4">
-                    <div className="card border-success">
-                      <div className="card-body text-center">
-                        <h6 className="text-muted mb-1">Total Attendees</h6>
-                        <h3 className="mb-0 text-success">{totalPeople}</h3>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4">
+                  <div className="col-md-6">
                     <div className="card border-info">
                       <div className="card-body text-center">
                         <h6 className="text-muted mb-1">Event Capacity</h6>
@@ -242,30 +233,22 @@ export default function ViewRegistrations() {
                   <table className="table table-hover align-middle">
                     <thead className="table-light">
                       <tr>
-                        <th>Registration ID</th>
-                        <th>Attendee ID</th>
-                        <th>Number of People</th>
+                        <th>Registration #</th>
+                        <th>Attendee Name</th>
+                        <th>Party Size</th>
                       </tr>
                     </thead>
                     <tbody>
                       {registrations.map(r => (
-                        <tr key={r.regId}>
-                          <td className="fw-semibold">{r.regId}</td>
-                          <td>{r.attId}</td>
+                        <tr key={r.regId ?? r.reg_id}>
+                          <td className="fw-semibold">{r.regId ?? r.reg_id}</td>
+                          <td>{r.attendeeName ?? r.attendee_name ?? `Attendee #${r.attId ?? r.att_id}`}</td>
                           <td>
-                            <span className="badge bg-primary">{r.noOfPeople}</span>
+                            <span className="badge bg-primary">{r.noOfPeople ?? r.no_of_people}</span>
                           </td>
                         </tr>
                       ))}
                     </tbody>
-                    <tfoot className="table-light">
-                      <tr>
-                        <td colSpan="2" className="fw-bold text-end">Total:</td>
-                        <td className="fw-bold">
-                          <span className="badge bg-success">{totalPeople}</span>
-                        </td>
-                      </tr>
-                    </tfoot>
                   </table>
                 </div>
               </>

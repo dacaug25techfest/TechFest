@@ -55,6 +55,7 @@ export default function ManageEvents() {
   const [states, setStates] = useState([]);
   const [cities, setCities] = useState([]);
   const [venues, setVenues] = useState([]);
+  const [analytics, setAnalytics] = useState([]);
 
   const [editingEvent, setEditingEvent] = useState(null);
   const [form, setForm] = useState({
@@ -82,6 +83,7 @@ export default function ManageEvents() {
     }
     loadEvents();
     loadLookups();
+    loadAnalytics();
   }, [ORGANIZER_ID, navigate]);
 
   useEffect(() => {
@@ -116,6 +118,16 @@ export default function ManageEvents() {
       setStates(s.data || []);
       setCities(c.data || []);
       setVenues(v.data || []);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const loadAnalytics = async () => {
+    if (!ORGANIZER_ID) return;
+    try {
+      const res = await axios.get(`${API}/analytics/${ORGANIZER_ID}`);
+      setAnalytics(res.data || []);
     } catch (err) {
       console.error(err);
     }
@@ -214,9 +226,18 @@ export default function ManageEvents() {
 
   const deleteEvent = async (eid) => {
     if (!window.confirm("Delete this event?")) return;
-    await axios.delete(`${API}/event/${eid}`);
-    setEvents(prev => prev.filter(e => e.eid !== eid));
+    try {
+      await axios.delete(`${API}/event/${eid}`);
+      setEvents(prev => prev.filter(e => e.eid !== eid));
+      loadAnalytics();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to delete event.");
+    }
   };
+
+  const hasRegistrations = (eid) =>
+    (analytics.find(a => (a.eventId ?? a.event_id) === eid)?.totalRegistrations ?? 0) > 0;
 
   /* =======================
      JSX
@@ -263,7 +284,9 @@ export default function ManageEvents() {
               </td>
               <td>
                 <button className="btn btn-sm btn-warning me-2" onClick={() => startEdit(e)}>Edit</button>
-                <button className="btn btn-sm btn-danger" onClick={() => deleteEvent(e.eid)}>Delete</button>
+                {!hasRegistrations(e.eid) && (
+                  <button className="btn btn-sm btn-danger" onClick={() => deleteEvent(e.eid)}>Delete</button>
+                )}
               </td>
             </tr>
           ))}

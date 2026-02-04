@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 using Organizer.Data;
 using Organizer.Models;
@@ -45,11 +45,22 @@ namespace Organizer.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<Registration>> GetEventRegistrations(int eid)
+        public async Task<List<RegistrationDto>> GetEventRegistrations(int eid)
         {
-            return await _context.Registrations
-                .Where(r => r.Eid == eid)
-                .ToListAsync();
+            var list = await (
+                from r in _context.Registrations
+                join a in _context.Attendees on r.AttId equals a.AttId
+                join u in _context.Users on a.Uid equals u.Uid
+                where r.Eid == eid
+                select new RegistrationDto
+                {
+                    RegId = r.RegId,
+                    AttId = r.AttId,
+                    AttendeeName = u.Name,
+                    NoOfPeople = r.NoOfPeople
+                }
+            ).ToListAsync();
+            return list;
         }
 
         public Task<List<State>> GetStates()
@@ -110,16 +121,18 @@ namespace Organizer.Repositories
                     var totalRegs = g.Where(x => x.RegId != 0).Select(x => x.RegId).Distinct().Count();
                     var totalPeople = g.Where(x => x.RegId != 0).Sum(x => x.NoOfPeople);
 
-                    // Age buckets of size 10 years
+                    // Age buckets of size 10 years (0-9, 10-19, 20-29, ...)
                     var ageBuckets = g
                         .Where(x => x.AttDob.HasValue)
                         .Select(x =>
                         {
                             var age = (int)Math.Floor((today - x.AttDob.Value.Date).TotalDays / 365.25);
                             if (age < 0) age = 0;
+                            if (age > 120) age = 120; // Cap unrealistic ages
                             return age;
                         })
                         .GroupBy(age => (age / 10) * 10)
+                        .Where(b => b.Key >= 0)
                         .OrderBy(b => b.Key)
                         .Select(b => new AgeBucketInfo
                         {

@@ -7,12 +7,12 @@ export default function ApproveEvents() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/pending-events")
+    axios.get("http://localhost:8083/admin/pending-events")
       .then(res => setEvents(res.data));
   }, []);
 
   const approve = (id) => {
-    axios.put(`http://localhost:8080/admin/approve/${id}`);
+    axios.put(`http://localhost:8083/admin/approve/${id}`);
   };
 
   return (

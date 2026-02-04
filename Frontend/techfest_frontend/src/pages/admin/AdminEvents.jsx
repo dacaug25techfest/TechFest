@@ -20,6 +20,12 @@ function formatDate(d) {
   return String(d).slice(0, 10);
 }
 
+const STATUS_LABELS = { 0: 'PENDING', 1: 'APPROVED', 2: 'REJECTED' };
+function statusLabel(s) {
+  if (s == null) return '—';
+  return STATUS_LABELS[s] ?? String(s);
+}
+
 function AdminEvents() {
   const location = useLocation();
   const isPendingOnly = location.pathname.endsWith('/pending');
@@ -118,14 +124,9 @@ function AdminEvents() {
                   <td>{formatTime(ev.time)}</td>
                   <td>₹{ev.fair ?? 0}</td>
                   <td>
-                    <span className={`status-${(ev.status || '').toLowerCase()}`}>
-                      {ev.status || '—'}
+                    <span className={`status-${(STATUS_LABELS[ev.status] ?? '').toLowerCase()}`}>
+                      {statusLabel(ev.status)}
                     </span>
-                    {ev.rejectionreason && (
-                      <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: 2 }}>
-                        {ev.rejectionreason}
-                      </div>
-                    )}
                   </td>
                   {isPendingOnly && (
                     <td>

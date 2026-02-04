@@ -40,7 +40,8 @@ public class AttendeeService {
 
     private Optional<Attendee> getLatestAttendeeByUid(int uid) {
         List<Attendee> all = attendeeRepository.findAllByUid(uid);
-        if (all == null || all.isEmpty()) return Optional.empty();
+        if (all == null || all.isEmpty())
+            return Optional.empty();
         return all.stream().max(Comparator.comparingInt(Attendee::getAttId));
     }
 
@@ -75,14 +76,14 @@ public class AttendeeService {
         attendee.setDegreeId(request.getDegreeId());
         attendee.setBranchId(request.getBranchId());
         attendee.setAddress(request.getAddress().trim());
-        
+
         // Set state and city if provided (optional fields)
-        if (request.getStateId() != null) {
-            attendee.setStateId(request.getStateId());
-        }
-        if (request.getCityId() != null) {
-            attendee.setCityId(request.getCityId());
-        }
+        // if (request.getStateId() != null) {
+        // attendee.setStateId(request.getStateId());
+        // }
+        // if (request.getCityId() != null) {
+        // attendee.setCityId(request.getCityId());
+        // }
 
         return attendeeRepository.save(attendee);
     }
@@ -95,17 +96,25 @@ public class AttendeeService {
         return branchRepository.findAll();
     }
 
+    /** Get only APPROVED events (status = 1) for attendees to browse */
     public List<Event> getAllEvents() {
-        return eventRepository.findAll();
+        return eventRepository.findApprovedEvents();
     }
 
     public Ticket registerForEvent(EventRegistrationRequest request) {
 
         Attendee attendee = getLatestAttendeeByUid(request.getUid())
-                .orElseThrow(() -> new IllegalArgumentException("Attendee profile not found. Please complete your profile first."));
+                .orElseThrow(() -> new IllegalArgumentException(
+                        "Attendee profile not found. Please complete your profile first."));
 
         Event event = eventRepository.findById(request.getEid())
                 .orElseThrow(() -> new IllegalArgumentException("Event not found"));
+
+        // Check if event is approved (status = 1)
+        if (event.getStatus() != null && event.getStatus() != 1) {
+            throw new IllegalStateException(
+                    "This event is not available for registration. It may be pending approval or has been rejected.");
+        }
 
         int people = Math.max(1, request.getNoOfPeople());
 

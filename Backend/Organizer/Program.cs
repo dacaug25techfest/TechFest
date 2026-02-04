@@ -2,24 +2,28 @@ using Microsoft.EntityFrameworkCore;
 using Organizer.Data;
 using Organizer.Repositories;
 using Organizer.Services;
-//using Steeltoe.Discovery.Client;
-
+using Steeltoe.Discovery.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
+/* -------------------- CORS -------------------- */
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp",
-        policy =>
-        {
-            policy
-                .WithOrigins("http://localhost:5173") // React URL
-                .AllowAnyHeader()
-                .AllowAnyMethod();
-        });
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy
+            .WithOrigins(
+                "http://localhost:3000",
+                "http://localhost:5173",
+                "http://localhost:5174"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
 });
 
-// Register DbContext
+/* -------------------- DB CONTEXT -------------------- */
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -29,63 +33,41 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     )
 );
 
-
-
-// Add services to the container.
-
-// Configure JSON serialization to use camelCase
+/* -------------------- CONTROLLERS & JSON -------------------- */
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
-        options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.PropertyNamingPolicy =
+            System.Text.Json.JsonNamingPolicy.CamelCase;
         options.JsonSerializerOptions.WriteIndented = true;
     });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+/* -------------------- SWAGGER -------------------- */
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add CORS - Configure for React app
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactApp", policy =>
-    {
-        policy.WithOrigins("http://localhost:3000", "http://localhost:5173", "http://localhost:5174")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
-    });
-});
+/* -------------------- EUREKA (STEELTOE) -------------------- */
+builder.Services.AddDiscoveryClient(builder.Configuration);
 
-//builder.Services.AddScoped<OrganizerService>();
+/* -------------------- DI -------------------- */
 builder.Services.AddScoped<IEventRepository, EventRepository>();
 builder.Services.AddScoped<OrganizerService>();
 
-
-
-
 var app = builder.Build();
 
+/* -------------------- MIDDLEWARE -------------------- */
 app.UseCors("AllowReactApp");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Use CORS - MUST be before UseRouting and MapControllers
-app.UseCors("AllowReactApp");
-
-// Use Steeltoe Discovery Client
-//app.UseDiscoveryClient();
-
-//app.UseHttpsRedirection();
+/* -------------------- EUREKA MIDDLEWARE -------------------- */
+app.UseDiscoveryClient();
 
 app.UseRouting();
-
-//app.UseAuthorization();
 
 app.MapControllers();
 

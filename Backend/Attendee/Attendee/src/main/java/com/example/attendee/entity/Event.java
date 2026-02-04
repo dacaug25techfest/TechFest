@@ -17,25 +17,23 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eid;
 
-    // Event name
     private String ename;
 
-    // Optional: venue id (matches your ERD column "vid")
-    @Column(name = "vid")
-    private Integer venueId;
+    @Column(name = "vid", nullable = false)
+    private int venueId;
+
+    @Column(name = "uid", nullable = false)
+    private int uid;
 
     private LocalDate date;
     private LocalTime time;
 
-    // Event fee
     private double fair;
 
-    // Text description (column exists in your screenshot)
     private String description;
 
-    // Remaining capacity
     private int capacity;
 
-    // 1 = active, 0 = inactive (optional, aligns with ERD "status")
+    /** 0 = PENDING, 1 = APPROVED, 2 = REJECTED (techfestemsdb.event.status int) */
     private Integer status;
 }
