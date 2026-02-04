@@ -15,41 +15,40 @@ import com.example.demo.entity.User;
 import com.example.demo.services.UserService;
 
 @RestController
-@RequestMapping("/api")
-@CrossOrigin
+@RequestMapping("/auth")
+// @CrossOrigin
 
 public class UserController {
-	 @Autowired
-	    private UserService userService;
+	@Autowired
+	private UserService userService;
 
-	    // SIGNUP
-	    @PostMapping("/signup")
-	    public ResponseEntity<?> signup(@RequestBody User user) {
+	// SIGNUP
+	@PostMapping("/signup")
+	public ResponseEntity<?> signup(@RequestBody User user) {
 
-	        User savedUser = userService.signup(user);
+		User savedUser = userService.signup(user);
 
-	        if (savedUser == null) {
-	            return ResponseEntity.badRequest()
-	                    .body(Map.of("message", "username already exists"));
-	        }
+		if (savedUser == null) {
+			return ResponseEntity.badRequest()
+					.body(Map.of("message", "username already exists"));
+		}
 
-	        return ResponseEntity.ok(savedUser);
-	    }
+		return ResponseEntity.ok(savedUser);
+	}
 
-	    // LOGIN
-	    @PostMapping("/login")
-	    public ResponseEntity<?> login(@RequestBody Map<String, String> data) {
+	// LOGIN
+	@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody Map<String, String> data) {
 
-	        Optional<User> user = userService.login(
-	                data.get("email"),
-	                data.get("password")
-	        );
+		Optional<User> user = userService.login(
+				data.get("email"),
+				data.get("password"));
 
-	        if (user.isPresent()) {
-	            return ResponseEntity.ok(user.get());
-	        } else {
-	            return ResponseEntity.status(401)
-	                    .body(Map.of("message", "login failed"));
-	        }
-	    }
+		if (user.isPresent()) {
+			return ResponseEntity.ok(user.get());
+		} else {
+			return ResponseEntity.status(401)
+					.body(Map.of("message", "login failed"));
+		}
+	}
 }
