@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './Navbar';
 import Landing from './pages/Landing';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -25,7 +24,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <Navbar />
+
 
       <Routes>
         {/* ===== PUBLIC ===== */}
