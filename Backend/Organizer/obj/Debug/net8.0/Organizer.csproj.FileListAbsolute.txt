@@ -136,6 +136,6 @@ E:\TechFest\TechFest\Backend\Organizer\obj\Debug\net8.0\Organizer.pdb
 E:\TechFest\TechFest\Backend\Organizer\bin\Debug\net8.0\Organizer.deps.json
 E:\TechFest\TechFest\Backend\Organizer\bin\Debug\net8.0\Organizer.runtimeconfig.json
 E:\TechFest\TechFest\Backend\Organizer\bin\Debug\net8.0\Organizer.pdb
-E:\TechFest\TechFest\Backend\Organizer\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\TechFest\TechFest\Backend\Organizer\obj\Debug\net8.0\Organizer.genruntimeconfig.cache
 E:\TechFest\TechFest\Backend\Organizer\obj\Debug\net8.0\ref\Organizer.dll
+E:\TechFest\TechFest\Backend\Organizer\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
