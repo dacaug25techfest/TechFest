@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\TechFest\\TechFest\\Backend\\Organizer\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|e:\\techfest\\techfest\\backend\\organizer\\organizer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:organizer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|e:\\techfest\\techfest\\backend\\organizer\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|e:\\techfest\\techfest\\backend\\organizer\\organizer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|solutionrelative:organizer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{62186E2F-C2DB-4282-B6DE-CCB3F1CF8E4E}|Organizer.csproj|e:\\techfest\\techfest\\backend\\organizer\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -36,16 +36,16 @@
         },
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Organizer",
               "DocumentMoniker": "E:\\TechFest\\TechFest\\Backend\\Organizer\\Organizer.csproj",
               "RelativeDocumentMoniker": "Organizer.csproj",
-              "ToolTip": "E:\\TechFest\\TechFest\\Backend\\Organizer\\Organizer.csproj*",
-              "RelativeToolTip": "Organizer.csproj*",
+              "ToolTip": "E:\\TechFest\\TechFest\\Backend\\Organizer\\Organizer.csproj",
+              "RelativeToolTip": "Organizer.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-02-04T10:59:57.028Z",
@@ -66,13 +66,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\TechFest\\TechFest\\Backend\\Organizer\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "E:\\TechFest\\TechFest\\Backend\\Organizer\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAABQAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-04T09:58:32.577Z",
               "EditorCaption": ""

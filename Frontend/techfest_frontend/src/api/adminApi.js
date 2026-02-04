@@ -1,4 +1,4 @@
-const ADMIN_API_BASE = 'http://localhost:8080/api/admin';
+const ADMIN_API_BASE = 'http://localhost:8083/api/admin';
 
 export async function adminLogin(email, password) {
   const params = new URLSearchParams({ email, password });
