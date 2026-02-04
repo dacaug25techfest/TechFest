@@ -4,3 +4,20 @@ node_modules
 dist
 build
 .vite
+
+# Java
+target/
+*.class
+
+# .NET
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+
+# General
+.vscode/
+.idea/
+.DS_Store
+
