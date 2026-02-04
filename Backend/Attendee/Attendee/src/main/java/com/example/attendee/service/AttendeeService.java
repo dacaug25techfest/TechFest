@@ -78,6 +78,13 @@ public class AttendeeService {
         attendee.setAddress(request.getAddress().trim());
 
         // Set state and city if provided (optional fields)
+
+//        if (request.getStateId() != null) {
+//            attendee.setStateId(request.getStateId());
+//        }
+//        if (request.getCityId() != null) {
+//            attendee.setCityId(request.getCityId());
+//        }=======
         // if (request.getStateId() != null) {
         // attendee.setStateId(request.getStateId());
         // }

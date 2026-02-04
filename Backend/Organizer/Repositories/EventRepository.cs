@@ -165,6 +165,12 @@ namespace Organizer.Repositories
             await _context.SaveChangesAsync();
             return announcement;
         }
+
+        public async Task<bool> IsOrganizerApproved(int organizerId)
+        {
+            var user = await _context.Users.FindAsync(organizerId);
+            return user != null && user.IsApproved;
+        }
     }
 
 }

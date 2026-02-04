@@ -33,3 +33,15 @@ ADD CONSTRAINT fk_attendee_city FOREIGN KEY (city_id) REFERENCES city(city_id);
 1. **AttendeeProfile.jsx** - Add state/city dropdowns ✅ (will be updated)
 2. **Organizer pages** - Fixed state dropdown case sensitivity ✅
 3. **Theme** - Applied landing page theme to organizer pages ✅
+
+## User Table - Add is_approved Column
+
+To support organizer approval workflow, add the `is_approved` column to the `user` table:
+
+```sql
+ALTER TABLE user 
+ADD COLUMN is_approved BOOLEAN DEFAULT FALSE;
+
+-- Initialize existing users as approved to avoid breaking current status
+UPDATE user SET is_approved = TRUE;
+```

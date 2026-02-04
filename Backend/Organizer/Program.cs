@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Organizer.Data;
 using Organizer.Repositories;
 using Organizer.Services;
@@ -70,5 +70,4 @@ app.UseDiscoveryClient();
 app.UseRouting();
 
 app.MapControllers();
-
 app.Run();

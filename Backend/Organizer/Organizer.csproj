@@ -16,7 +16,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
 
-    <!-- MySQL Provider (MATCH EF CORE VERSION) -->
+    <!-- MySQL Provider -->
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
 
     <!-- Swagger -->

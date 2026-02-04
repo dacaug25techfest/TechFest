@@ -59,7 +59,7 @@ export default function CreateEvent() {
   const loadLookups = async () => {
     setLoadingData(true);
     setError("");
-    
+
     try {
       console.log("Loading states, cities, and venues from:", API);
       const [statesRes, citiesRes, venuesRes] = await Promise.all([
@@ -67,17 +67,17 @@ export default function CreateEvent() {
         axios.get(`${API}/cities`).catch(err => ({ data: [], error: err })),
         axios.get(`${API}/venues`).catch(err => ({ data: [], error: err })),
       ]);
-      
+
       console.log("States API Response:", statesRes.data);
       console.log("Cities API Response:", citiesRes.data);
       console.log("Venues API Response:", venuesRes.data);
-      
+
       const statesData = statesRes.data || [];
       const citiesData = citiesRes.data || [];
       const venuesData = venuesRes.data || [];
-      
+
       console.log(`Loaded ${statesData.length} states, ${citiesData.length} cities, ${venuesData.length} venues`);
-      
+
       if (statesData.length > 0) {
         console.log("First state sample:", statesData[0]);
         console.log("State keys:", Object.keys(statesData[0]));
@@ -85,7 +85,7 @@ export default function CreateEvent() {
         console.warn("⚠️ No states returned from API!");
         setError("No states found. Please ensure backend is running and database has state records.");
       }
-      
+
       setStates(statesData);
       setCities(citiesData);
       setVenues(venuesData);
@@ -116,13 +116,13 @@ export default function CreateEvent() {
   const handleCityChange = (e) => {
     const newCityId = Number(e.target.value);
     setSelectedCityId(e.target.value);
-    
+
     const venueForCity = venues.find(
       v =>
         getVenueStateId(v) === Number(selectedStateId) &&
         getVenueCityId(v) === newCityId
     );
-    
+
     if (venueForCity) {
       updateField("vid", venueForCity.vid ?? venueForCity.Vid);
     } else {
@@ -148,7 +148,7 @@ export default function CreateEvent() {
     const payload = {
       ename: form.ename,
       vid: Number(form.vid),
-      time: form.time,
+      time: form.time.length === 5 ? form.time + ":00" : form.time,
       date: form.date,
       fair: parseFloat(form.fair),
       description: form.description || "",
@@ -169,11 +169,16 @@ export default function CreateEvent() {
         err?.response?.data && typeof err.response.data === "string"
           ? err.response.data
           : err?.response?.data?.message || "";
-      setError(
-        serverMsg
-          ? `Failed to create event: ${serverMsg}`
-          : "Failed to create event. Please check the details and try again."
-      );
+
+      if (serverMsg.includes("not approved")) {
+        setError("⚠️ Your account is pending approval. You cannot create events until an admin approves your account.");
+      } else {
+        setError(
+          serverMsg
+            ? `Failed to create event: ${serverMsg}`
+            : "Failed to create event. Please check the details and try again."
+        );
+      }
     } finally {
       setSaving(false);
     }
@@ -257,6 +262,22 @@ export default function CreateEvent() {
                 </h5>
               </div>
               <div className="card-body p-4">
+                {/* Approval Warning */}
+                {storedUser && storedUser.isApproved === false && (
+                  <div className="alert alert-warning border-warning shadow-sm mb-4">
+                    <div className="d-flex">
+                      <div className="fs-1 me-3">⚠️</div>
+                      <div>
+                        <h4 className="alert-heading fw-bold">Account Pending Approval</h4>
+                        <p className="mb-0">
+                          Your organizer account is currently pending administrator approval.
+                          You cannot create events until your account is approved.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
                 {error && (
                   <div className="alert alert-danger alert-dismissible fade show" role="alert">
                     {error}
@@ -432,7 +453,11 @@ export default function CreateEvent() {
                     </div>
 
                     <div className="d-flex gap-2">
-                      <button type="submit" className="btn btn-primary btn-lg" disabled={saving}>
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-lg"
+                        disabled={saving || (storedUser && storedUser.isApproved === false)}
+                      >
                         {saving ? (
                           <>
                             <span className="spinner-border spinner-border-sm me-2" role="status"></span>

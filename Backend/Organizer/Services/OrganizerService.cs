@@ -12,9 +12,13 @@ namespace Organizer.Services
             _repo = repo;
         }
 
-        public Task<Event> CreateEvent(Event ev)
+        public async Task<Event> CreateEvent(Event ev)
         {
-            return _repo.CreateEvent(ev);
+            if (!await _repo.IsOrganizerApproved(ev.OrganizerId))
+            {
+                throw new InvalidOperationException("Organizer is not approved to create events.");
+            }
+            return await _repo.CreateEvent(ev);
         }
 
         public Task<Event> UpdateEvent(Event ev)

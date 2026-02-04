@@ -21,7 +21,14 @@ namespace Organizer.Controllers
         [HttpPost("event")]
         public async Task<IActionResult> CreateEvent([FromBody] Event ev)
         {
-            return Ok(await _service.CreateEvent(ev));
+            try
+            {
+                return Ok(await _service.CreateEvent(ev));
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message); // Or StatusCode(403, ex.Message)
+            }
         }
 
         // 2. Update Event

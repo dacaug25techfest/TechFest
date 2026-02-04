@@ -18,6 +18,8 @@ namespace Organizer.Repositories
         // Analytics & announcements
         Task<List<EventAnalyticsDto>> GetEventAnalytics(int organizerId);
         Task<Announcement> CreateAnnouncement(Announcement announcement);
+
+        Task<bool> IsOrganizerApproved(int organizerId);
     }
 
 }

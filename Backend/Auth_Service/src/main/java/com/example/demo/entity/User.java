@@ -48,4 +48,7 @@ public class User {
 
     @Column(name = "city_id", nullable = false)
     private Integer cityId;
+
+    @Column(name = "is_approved", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    private Boolean isApproved = false;
 }
