@@ -1,6 +1,48 @@
 [
   {
     "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "Analytics",
+    "RelativePath": "organizer/analytics/{organizerId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "organizerId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "CreateAnnouncement",
+    "RelativePath": "organizer/announcement",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "Organizer.Models.Announcement",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "Cities",
+    "RelativePath": "organizer/cities",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
     "Method": "Dashboard",
     "RelativePath": "organizer/dashboard/{organizerId}",
     "HttpMethod": "GET",
@@ -64,6 +106,26 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Organizer.Controllers.HomeController",
+    "Method": "Health",
+    "RelativePath": "Organizer/health",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Organizer.Controllers.OrganizerController",
     "Method": "Registrations",
     "RelativePath": "organizer/registrations/{eid}",
@@ -77,6 +139,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "States",
+    "RelativePath": "organizer/states",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Organizer.Controllers.OrganizerController",
+    "Method": "Venues",
+    "RelativePath": "organizer/venues",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

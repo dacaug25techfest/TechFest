@@ -24,7 +24,6 @@ function Landing() {
 
           </nav>
           <div className="nav-actions">
-            <Link to="/admin/login" className="btn-outline">Admin</Link>
             <Link to="/login" className="btn-outline">Login</Link>
             <Link to="/register" className="btn-primary">Register</Link>
           </div>
@@ -96,7 +95,7 @@ function Landing() {
             <div className="role-card">
               <h3 className="role-title">Attendees</h3>
               <p className="role-description">
-              Discover events, register easily, view your registered events, and provide feedback. Stay updated and manage your participation effortlessly.              </p>
+                Discover events, register easily, view your registered events, and provide feedback. Stay updated and manage your participation effortlessly.              </p>
             </div>
             <div className="role-card">
               <h3 className="role-title">Organizers</h3>

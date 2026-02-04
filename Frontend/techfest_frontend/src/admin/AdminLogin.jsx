@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { adminLogin } from '../../api/adminApi';
-import '../Auth.css';
+import { adminLogin } from '../api/adminApi';
+import './Admin.css';
 
 function AdminLogin() {
   const [formData, setFormData] = useState({ email: '', password: '' });

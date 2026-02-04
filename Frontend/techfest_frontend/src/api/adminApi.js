@@ -52,3 +52,9 @@ export async function getAdminUsersByRole(roleId) {
   if (!res.ok) throw new Error('Failed to fetch users');
   return res.json();
 }
+
+export async function approveUser(uid) {
+  const res = await fetch(`${ADMIN_API_BASE}/users/${uid}/approve`, { method: 'PUT' });
+  if (!res.ok) throw new Error('Failed to approve user');
+  return res.json();
+}
