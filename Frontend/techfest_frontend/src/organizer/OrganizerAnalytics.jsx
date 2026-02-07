@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import axios from "axios";
 
-const API = "http://localhost:5041/organizer";
+const API = "http://localhost:8080/organizer";
 
 export default function OrganizerAnalytics() {
   const [data, setData] = useState([]);
@@ -28,6 +28,8 @@ export default function OrganizerAnalytics() {
         setData(res.data || []);
       } catch (err) {
         console.error(err);
+        console.log("Organizer ID:", organizerId);
+
         setError("Failed to load analytics data.");
       } finally {
         setLoading(false);

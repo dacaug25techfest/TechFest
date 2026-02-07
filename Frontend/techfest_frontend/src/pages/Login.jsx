@@ -92,7 +92,7 @@ function Login() {
       } else {
         // Attendee default behaviour: check profile status
         const statusRes = await fetch(
-          `http://localhost:8082/api/attendee/profile-status/${user.uid}`
+          `http://localhost:8080/attendee/profile-status/${user.uid}`
         );
 
         if (!statusRes.ok) {

@@ -31,7 +31,7 @@ function Events() {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch('http://localhost:8082/api/attendee/events');
+        const res = await fetch('http://localhost:8080/attendee/events');
         if (!res.ok) {
           throw new Error('Failed to load events');
         }
@@ -39,7 +39,7 @@ function Events() {
         setEvents(eventsData);
 
         const ticketsRes = await fetch(
-          `http://localhost:8082/api/attendee/tickets/${user.uid}`
+          `http://localhost:8080/attendee/tickets/${user.uid}`
         );
         if (ticketsRes.ok) {
           const ticketsData = await ticketsRes.json();
@@ -61,7 +61,7 @@ function Events() {
     if (!user) return;
 
     try {
-      const res = await fetch('http://localhost:8082/api/attendee/register-event', {
+      const res = await fetch('http://localhost:8080/attendee/register-event', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,13 +83,13 @@ function Events() {
       setActiveTab('registrations');
 
       // Refresh events & tickets to show updated capacity / registrations
-      const eventsRes = await fetch('http://localhost:8082/api/attendee/events');
+      const eventsRes = await fetch('http://localhost:8080/attendee/events');
       if (eventsRes.ok) {
         setEvents(await eventsRes.json());
       }
 
       const ticketsRes = await fetch(
-        `http://localhost:8082/api/attendee/tickets/${user.uid}`
+        `http://localhost:8080/attendee/tickets/${user.uid}`
       );
       if (ticketsRes.ok) {
         setTickets(await ticketsRes.json());
