@@ -28,7 +28,7 @@ function MyTickets() {
     const fetchTickets = async () => {
       try {
         const res = await fetch(
-          `http://localhost:8082/api/attendee/tickets/${user.uid}`
+          `http://localhost:8080/attendee/tickets/${user.uid}`
         );
         if (!res.ok) {
           throw new Error('Failed to load tickets');
@@ -55,7 +55,7 @@ function MyTickets() {
     }
 
     try {
-      const res = await fetch('http://localhost:8082/api/attendee/feedback', {
+      const res = await fetch('http://localhost:8080/attendee/feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

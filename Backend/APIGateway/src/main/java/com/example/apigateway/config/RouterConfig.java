@@ -26,6 +26,8 @@ public class RouterConfig {
 				.route("Auth_Service", r -> r.path("/auth/**")
 						.uri("http://localhost:8081"))
 				// .uri("lb://Auth_Service"))
+				.route("Organizer", r -> r.path("/organizer/**")
+						.uri("http://localhost:5041"))
 
 				.build();
 

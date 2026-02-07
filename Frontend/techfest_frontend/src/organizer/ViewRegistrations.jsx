@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useSearchParams, Link } from "react-router-dom";
 
-const API = "http://localhost:5041/organizer";
+const API = "http://localhost:8080/organizer";
 
 export default function ViewRegistrations() {
   const navigate = useNavigate();

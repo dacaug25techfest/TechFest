@@ -7,21 +7,21 @@ using Steeltoe.Discovery.Client;
 var builder = WebApplication.CreateBuilder(args);
 
 /* -------------------- CORS -------------------- */
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactApp", policy =>
-    {
-        policy
-            .WithOrigins(
-                "http://localhost:3000",
-                "http://localhost:5173",
-                "http://localhost:5174"
-            )
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
-    });
-});
+//builder.Services.AddCors(options =>
+//{
+//    options.AddPolicy("AllowReactApp", policy =>
+//    {
+//        policy
+//            .WithOrigins(
+//                "http://localhost:3000",
+//                "http://localhost:5173",
+//                "http://localhost:5174"
+//            )
+//            .AllowAnyHeader()
+//            .AllowAnyMethod()
+//            .AllowCredentials();
+//    });
+//});
 
 /* -------------------- DB CONTEXT -------------------- */
 builder.Services.AddDbContext<AppDbContext>(options =>

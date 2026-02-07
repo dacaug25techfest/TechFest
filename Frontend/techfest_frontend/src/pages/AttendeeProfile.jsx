@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const ATTENDEE_API = 'http://localhost:8082/api/attendee';
-const ORGANIZER_API = 'http://localhost:5041/organizer';
+const ATTENDEE_API = 'http://localhost:8080/attendee';
+const ORGANIZER_API = 'http://localhost:8080/organizer';
 
 // Helper functions for state/city - handle all possible formats
 const getStateId = s => s?.stateId ?? s?.StateId ?? s?.state_id ?? s?.id;

@@ -19,7 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/attendee")
-@CrossOrigin
+// @CrossOrigin
 public class AttendeeController {
 
     @Autowired
